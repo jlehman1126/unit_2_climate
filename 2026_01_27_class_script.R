@@ -74,5 +74,12 @@ grn_ice_loss_NA = grn_ice_loss_NA[order(grn_ice_loss_NA$decimal_date), ]
 min(ant_ice_loss$mass_Gt)
 min(grn_ice_loss$mass_Gt)
 
+# open up plotting devide
+pdf("figures/ice_mass_trends.pdf", width = 7, height = 5)
+
+# create the figure
 barplot(height = c(min(ant_ice_loss$mass_Gt),min(grn_ice_loss$mass_Gt))*(-1),
         names.arg = c("Antarctica", "Greenland"))
+
+# close plotting device
+dev.off()
