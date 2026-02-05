@@ -52,7 +52,7 @@ co2_monthly_cycle$detrended_monthly_cycle[12] = mean(co2$seasonal_cycle[co2$mont
 plot(detrended_monthly_cycle ~ month, data = co2_monthly_cycle, type = "l", col = "navy")
 
 
-# for loops
+# for loops - for when you know how many times a task is to be repeated
 for (i in c(1:4)){
     print(i)
 }
@@ -93,3 +93,42 @@ for(i in seq(num)){
   factorial_result = i * factorial_result
   print(factorial_result)
 }
+
+
+# nested for loops
+
+mat = matrix(c(2,0,8,3,5,-4), nrow = 2, ncol = 3)
+mat
+mat_squared = matrix(rep(NA, 6), nrow = 2, ncol =3)
+mat_squared
+
+dim(mat)
+
+for(i in seq(dim(mat)[1])){
+  for(j in seq(dim(mat)[2])){
+    print(paste("I'm on row: ", i, "and column: ", j))
+    mat_squared[i,j] = mat[i,j]^2
+  }
+}
+# this will run the inner most for loop first so it went through each column first (j) then moved to rows (i)
+mat_squared
+
+
+# while loops - for when you don't know how many times a task needs to be repeated
+
+x = 1
+while (x > 0){
+  x = x + 1
+} # this is going to be an infinite loop and will not stop
+
+# fish catching game - can't catch more than 50lb of fish
+
+total_catch_lb = 0
+n_fish = 0
+while (total_catch_lb < 50){ # keep fishing while total catch is under 50
+  new_fish_weight = rnorm(n = 1, mean = 2, sd = 1)
+  total_catch_lb = total_catch_lb + new_fish_weight
+  n_fish = n_fish + 1
+  print(paste("n fish =", n_fish, " and new fish weight = ", new_fish_weight))
+}
+
